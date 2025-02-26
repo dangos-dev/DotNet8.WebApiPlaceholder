@@ -11,7 +11,7 @@ WebApplication app = builder.Build();
 app.UseSwagger(opt => opt.RouteTemplate = "openapi/{documentName}.json");
 app.MapScalarApiReference(
     opt => {
-        opt.Title = "WebApi with Scalar Example";
+        opt.Title = "WebApi Placeholder";
         opt.Theme = ScalarTheme.BluePlanet;
         opt.DefaultHttpClient = new(ScalarTarget.Http, ScalarClient.Http11);
     }

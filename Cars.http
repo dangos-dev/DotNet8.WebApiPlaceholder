@@ -1,0 +1,48 @@
+@baseUrl = http://localhost:5290/api/cars
+@contentType = application/json
+@guid = df614418-7c5f-4973-99e0-19af2631b4fa
+
+### Get All Cars
+GET {{baseUrl}} HTTP/1.1
+
+### Get Single Car (Replace {id})
+GET {{baseUrl}}/{{guid}} HTTP/1.1
+
+### Create New Car
+POST {{baseUrl}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "make": "Tesla",
+  "model": "Model S",
+  "year": 2023
+}
+
+### Full Update (PUT - Replace {id})
+PUT {{baseUrl}}/{{guid}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "make": "Ford",
+  "model": "Mustang GT",
+  "year": 2024,
+  "vin": "1FA6P8TH123456"
+}
+
+### Partial Update (PATCH - Replace {id})
+PATCH {{baseUrl}}/{{guid}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "model": "Mustang Dark Horse",
+  "year": 2025
+}
+
+### Delete Car (Replace {id})
+DELETE {{baseUrl}}/{{guid}} HTTP/1.1
+
+### Head Request
+HEAD {{baseUrl}} HTTP/1.1
+
+### Options Request
+OPTIONS {{baseUrl}} HTTP/1.1

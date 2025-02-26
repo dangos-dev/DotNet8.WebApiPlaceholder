@@ -1,0 +1,71 @@
+@baseUrl = http://localhost:5290/api/dango
+@contentType = application/json
+@guid = c6f6ff02-ee17-4f5a-a8fc-0688b8be3848
+
+### 1. Get Empty Menu (Initial State)
+GET {{baseUrl}}
+
+### 2. Initialize Default Menu
+POST {{baseUrl}}/initialize
+Content-Type: {{contentType}}
+
+### 3. Get Full Menu
+GET {{baseUrl}}
+
+### 4. Create New Seasonal Dango
+POST {{baseUrl}}
+Content-Type: {{contentType}}
+
+{
+  "flavor": "Pumpkin Spice",
+  "glazeType": "Cinnamon Sugar",
+  "skewerCount": 3,
+  "isNewArrival": true
+}
+
+### 5. Get Specific Dango (Replace ID)
+GET {{baseUrl}}/{{guid}}
+
+### 6. Full Update (PUT - Replace ID)
+PUT {{baseUrl}}/{{guid}}
+Content-Type: {{contentType}}
+
+{
+  "flavor": "Premium Anko",
+  "glazeType": "Gold Leaf Red Bean",
+  "skewerCount": 3,
+  "isNewArrival": false,
+  "sku": "DNG-2310-1001"
+}
+
+### 7. Partial Update (PATCH - Replace ID)
+PATCH {{baseUrl}}/{{guid}}
+Content-Type: {{contentType}}
+
+{
+  "skewerCount": 5,
+  "isNewArrival": false
+}
+
+### 8. Invalid Creation (Test Validation)
+POST {{baseUrl}}
+Content-Type: {{contentType}}
+
+{
+  "flavor": "",
+  "glazeType": "Invalid",
+  "skewerCount": -1,
+  "isNewArrival": true
+}
+
+### 9. Delete Dango (Replace ID)
+DELETE {{baseUrl}}/{{guid}}
+
+### 10. HEAD Check
+HEAD {{baseUrl}}
+
+### 11. OPTIONS Check
+OPTIONS {{baseUrl}}
+
+### 12. Get Non-Existent Item
+GET {{baseUrl}}/00000000-0000-1208-9999-000000000000
